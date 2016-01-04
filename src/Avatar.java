@@ -15,6 +15,11 @@ public class Avatar extends Creature {
 		this.completedCourses = new ArrayList<String>();
 		backpack.addToBackpack(new Key());		
 	}
+	
+	public void cheat(){
+		this.hp = 180;
+		this.ongoingCourses = new ArrayList<String>();
+	}
 
 	public void changeCredits(int hp) {
 		this.hp = this.hp + hp;
