@@ -1,5 +1,5 @@
 Room 1357;Room 1356;X;Room 1358;Hallway 4;False;X;False;False
 Hallway 4;X;Room 1357;Hallway 5;X;X;False;False;X
 Hallway 5;Hallway 4;Room 1358;X;X;False;False;X;X
-Room 1358;Room 1357;X;X;Hallway 5;False;X;X;False;
+Room 1358;Room 1357;X;X;Hallway 5;False;X;X;False
 Room 1356;X;X;Room 1357;X;X;X;False;X
