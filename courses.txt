@@ -1,15 +1,20 @@
-Science;Kaffekokning i pumpa av ohärdat glas;10;question;ans1;ans2;ans3;a
-Computer sciene;Interesting Book;10;fråga;a11;a22;a33;c
+Science;Kaffekokning;10;question;ans1;ans2;ans3;a
+Science 2;Kaffekokning 2;10;question;ans1;ans2;ans3;a
+Science 3;Kaffekokning 3;10;question;ans1;ans2;ans3;a
+Computer science;Interesting Book;10;fråga;a11;a22;a33;c
+Computer science 2;Interesting Book 2;10;fråga;a11;a22;a33;c
+Computer science 3;Interesting Book 3;10;fråga;a11;a22;a33;c
 Algebra 1;Algebra-book 1;5;This is a quetion?;a1;a2;a3;b
 Algebra 2;Algebra-book 2;30;This is a quetion?;a1;a2;a3;b
 Algebra 3;Algebra-book 3;5;This is a quetion?;a1;a2;a3;b
 Java;J-book;30;This is a quetions;a1;a2;a3;b
 Java 2;J2;30;This is a quetions;a1;a2;a3;b
+Java 3;J3;30;This is a quetions;a1;a2;a3;b
 C;Learn C;30;This is a quetions;a1;a2;a3;b
+C 2;Pointers;30;This is a quetions;a1;a2;a3;b
+C 3;MagiC;30;This is a quetions;a1;a2;a3;b
 Math 1;x1;20;This is a quetions;a1;a2;a3;b
 Math 2;x2;20;This is a quetions;a1;a2;a3;b
 Math 3;x3;20;This is a quetions;a1;a2;a3;b
 Math 4;x4;20;This is a quetions;a1;a2;a3;b
 Math 5;x5;20;This is a quetions;a1;a2;a3;b
-Algebra 1;Algebra-bok;30;This is a quetions;a1;a2;a3;b
-

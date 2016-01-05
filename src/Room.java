@@ -62,13 +62,18 @@ public class Room /*implements ListToString*/ {
 	    System.out.println("That's just a wall.");
 	}
     }
+    //todo: eventuellt lägga in stöd för stora bokstäver
     private int directionToInt(String direction) {
 	int i;
 	switch (direction) {
 	case "north": i = 0; break;
+	case "n": i = 0; break;
 	case "east": i = 1; break;
+	case "e": i = 1; break;
 	case "south": i = 2; break;
+	case "s": i = 2; break;
 	case "west": i = 3; break;
+	case "w": i = 3; break;
 	default: System.out.println("'" + direction + "' is not a direction"); i = 5;
 	}
 	return i;
@@ -111,15 +116,10 @@ public class Room /*implements ListToString*/ {
 	Teacher t = teacherInRoom();
 	Avatar a = avatarInRoom();
 
-	// TODO: Bryt ut till en funktion
-	if (t != null) {
-	    Boolean hasBook = a.hasBook(t.getBook().getName());
-	    String courseName = t.getCourseName();
-	    Boolean completedCourse = a.completedCourse(courseName);
-	    Boolean ongoingCourse = a.ongoingCourse(courseName);
-	    int achievedCredits = t.askQuestion(completedCourse, ongoingCourse, hasBook);
-	    a.changeCredits(achievedCredits);
+	if (t != null && a != null) {
+	    t.askQuestion(a);
 	}
+	else System.out.println("something wrong");
     }
     public void addToRoom(Object o) {
 	if (o instanceof Item) {
@@ -168,12 +168,12 @@ public class Room /*implements ListToString*/ {
 	return null;
     }
 	
-    public Student studentInRoom() {
+    public Student studentInRoom(String name) {
 	for (int i = 0; i < creatures.size(); i ++) {
 	    Creature crnt = creatures.get(i);
 	    if (crnt instanceof Student) {
 		Student s = (Student) crnt;
-		return s;
+		if (name.equalsIgnoreCase(s.getName())) return s;
 	    }
 	}
 	return null;

@@ -7,19 +7,19 @@ public class Avatar extends Creature {
     private ArrayList<String> ongoingCourses;
     private ArrayList<String> completedCourses;
 
-	public Avatar(String name) {
-		super(name);
-		this.backpack = new Backpack();
-		this.hp = 60;
-		this.ongoingCourses = new ArrayList<String>();
-		this.completedCourses = new ArrayList<String>();
-		backpack.addToBackpack(new Key());		
-	}
-	
-	public void cheat(){
-		this.hp = 180;
-		this.ongoingCourses = new ArrayList<String>();
-	}
+    public Avatar(String name) {
+	super(name);
+	this.backpack = new Backpack();
+	this.hp = 60;
+	this.ongoingCourses = new ArrayList<String>();
+	this.completedCourses = new ArrayList<String>();
+	backpack.addToBackpack(new Key());		
+    }
+    // TODO: ta bort när spelet är färdigt
+    public void cheat(){
+	this.hp = 180;
+	this.ongoingCourses = new ArrayList<String>();
+    }
 
     public void changeCredits(int hp) {
 	this.hp = this.hp + hp;
@@ -64,15 +64,25 @@ public class Avatar extends Creature {
     public void addOngoing(String course) {
 	ongoingCourses.add(course);
     }
-    public Boolean pickUp(Item i) {
-	return backpack.addToBackpack(i);
+    public void addCompleted(String course, int hp) {
+	ongoingCourses.add(course);
+	changeCredits(hp);
     }
-
+    public void removeOngoing(String course) {
+	ongoingCourses.add(course);
+    }
+    public void removeCompleted(String course, int hp) {
+	ongoingCourses.add(course);
+	changeCredits(hp);
+    }
     public Key hasKey() {
 	return backpack.hasKey();
     }
     public Boolean hasBook(String bookName) {
 	return(backpack.hasBook(bookName) != null);
+    }
+    public Boolean pickUp(Item i) {
+	return backpack.addToBackpack(i);
     }
     public Boolean drop(Item i) {
 	return backpack.dropFromBackpack(i);
