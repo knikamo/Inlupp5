@@ -16,6 +16,10 @@ public class Backpack implements ListToString {
 
     // Add and checks if valid add
     public Boolean addToBackpack (Item addItem) {
+	if(addItem == null) {
+	    return false;
+	}
+
 	double itemVolume = addItem.getVolume();
 	Boolean added = false;
 
@@ -68,6 +72,7 @@ public class Backpack implements ListToString {
 	}
 	return null;
     }
+
     public String toString() {
 	String s = "Backpack: ";
 	try {

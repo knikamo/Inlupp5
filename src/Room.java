@@ -29,6 +29,44 @@ public class Room /*implements ListToString*/ {
 	return this.name;
     }
 
+    public ArrayList<Item> getItems() {
+	return this.items;
+    }
+
+    public Key hasKey() {
+	for (int i = 0; i < items.size(); i++) {
+	    Item item = items.get(i);
+	    if (item instanceof Key) {
+		Key k = (Key) item;
+		return k;
+	    }
+	}
+	return null;
+    }
+
+
+    public Book hasBook(String bookName) {
+	for (int i = 0; i < items.size(); i++) {
+	    Item item = items.get(i);
+	    if (item instanceof Book) {
+		Book b = (Book) item;
+		String name = b.getName();
+		if(name.equals(bookName)) {
+		    return b;
+		}
+	    }
+	}
+	return null;
+    }
+
+
+    // Drop and checks if valid drop
+    public Boolean removeItem (Item dropItem) {
+	Boolean hasDropped = (this.items).remove(dropItem);
+	return hasDropped;
+    }
+
+
     public void setRooms(Room[] rooms) {
 	this.rooms = rooms;
     }

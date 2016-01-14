@@ -77,9 +77,13 @@ public class World extends BuildWorld {
 	    Boolean twoWords = (splitInput.length >= 2);
 	    Boolean threeWords = (splitInput.length >= 3);
 	    
-	    switch (splitInput[0]) {
+	    switch (splitInput[0].toLowerCase()) {
 	    case "help": printHelp(); break;
-				
+	
+	    case "show":	
+		if (twoWords && splitInput[1].toLowerCase().equals("hp")) 
+		    System.out.println("Current HP: " + player.getHp()); break;
+		
 	    case "enroll": 
 		if (twoWords)
 		    enrollCourse(splitInput); break;
@@ -91,7 +95,7 @@ public class World extends BuildWorld {
 	    case "inventory": printInventory(); break;
 
 	    case "pick":
-		if (threeWords && splitInput[1].equals("up")) 
+		if (threeWords && splitInput[1].toLowerCase().equals("up")) 
 		    pickUp(splitInput[2]); break;
 					
 	    case "talk": 
@@ -103,7 +107,7 @@ public class World extends BuildWorld {
 		    trade(splitInput[1]); break;
 				
 	    case "use": 
-		if (threeWords && splitInput[1].equals("key"))
+		if (threeWords && splitInput[1].toLowerCase().equals("key"))
 		    useKey(splitInput[2]); break;
 				
 	    case "exit": continueGame = false; break;
@@ -131,6 +135,7 @@ public class World extends BuildWorld {
 	help += "go x\t\tgoes to the room in direction x\n";
 	help += "inventory\tshows items in your backpack\n";
 	help += "pick up x\tpick up item x\n";
+	help += "show hp \tshows your current hp\n";
 	help += "talk x\t\ttalk to the student with name x\n";
 	help += "use key x\tunlock the door in direction x\n";
 	help += "exit\t\texit game\n";	
@@ -179,9 +184,27 @@ public class World extends BuildWorld {
 	}
     }
 	
+
+    // TODO: String item blir max ett ord vid "pick up 'x3' (book)"
     private void pickUp(String item) {
-	System.out.println("pick up up up " + item);
-    }
+	System.out.println(currentRoom.arrListToString(currentRoom.getItems()));
+
+	Item i = null;
+	if(item.toLowerCase().equals("key")) {
+	    i = currentRoom.hasKey();
+	} else {
+	    i = currentRoom.hasBook(item);
+	}	   
+	if (i != null) {
+	    player.getBackpack().addToBackpack(i);
+	    currentRoom.removeItem(i);
+	    System.out.println("You picked up " + item);
+	} else {
+	    System.out.println("There is no " + item + " to pick up! Stop trying to cheat!");
+	}
+    }       
+
+
     //todo: inget krav enligt specifikationen men om vi orkar kan vi
     //fixa så att lärarna kan prata
     private void talk(String studentName) {

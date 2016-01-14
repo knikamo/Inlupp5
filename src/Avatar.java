@@ -95,4 +95,13 @@ public class Avatar extends Creature {
     public Boolean readyForExam() {
 	return (hp >= 180 && ongoingCourses.isEmpty());
     }
+
+    public Backpack getBackpack() {
+	return this.backpack;
+    }
+    
+    public int getHp() {
+	return this.hp;
+    }
+
 }
