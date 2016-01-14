@@ -29,6 +29,5 @@ public class Student extends Creature {
 	studentInfo += " and I study " + ongoingCourse + ".";
 	studentInfo += " I've finished the course " + completedCourse + ".";
 	return studentInfo;
-	//System.out.println("Hello, I'm a student");
     }
 }

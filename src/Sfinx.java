@@ -16,7 +16,6 @@ public class Sfinx extends Creature {
 	Random random = new Random();
 	int numberOfQuotes = (this.quotes).size();
 	int randomIndex = random.nextInt(numberOfQuotes);
-	//System.out.println((this.quotes).get(randomIndex));
 	return ((this.quotes).get(randomIndex));
     }
 

@@ -19,7 +19,7 @@ public class Teacher extends Creature {
     }
 
     public String talk() {
-	return "Hello, I'm a teacher";
+	return "Hello, I'm a teacher and teach the course " + course.getName();
     }
 
     // TODO: Ta hänsyn till kurser
