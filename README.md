@@ -9,6 +9,7 @@ Inlupp 5, IOOPM 2015
 * flytta kurs från avslutad till oavslutad (och tvärtom)
 * pick up x (ta upp ett föremål)
 * skriva ut diplom
+* lägg till så man kan se sin hp
 
 ###Todo senare
 * hitta på frågor till kurserna
