@@ -133,6 +133,7 @@ abstract class BuildWorld {
 	    String courseName = crntInfo[0];
 	    String bookName = crntInfo[1];
 	    Book book = findBook(books, bookName);
+	    if (book == null) System.out.println("book is null");
 	    int hp = Integer.parseInt(crntInfo[2]);
  			
 	    String question = crntInfo[3];
@@ -185,10 +186,10 @@ abstract class BuildWorld {
 	    String[] crntInfo = studentInfo.get(i);
 	    String name = crntInfo[0];
  			
-	    String ongoing = courses.get(i).getName();
-	    String completed = courses.get(i+1).getName();
+	    String ongoing = courses.get(i+1).getName();
+	    String completed = courses.get(i).getName();
 	    Book book;
-	    if (i % 2 == 0) book = courses.get(i+1).getBook(); //varannan student får en bok
+	    if (i % 2 == 0) book = courses.get(i).getBook(); //varannan student får en completed  bok
 	    else book = null;
 	    Student s = new Student(name, ongoing, completed, book);
 	    students.add(s);

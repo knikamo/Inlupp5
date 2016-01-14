@@ -107,6 +107,8 @@ public class World extends BuildWorld {
 		    useKey(splitInput[2]); break;
 				
 	    case "exit": continueGame = false; break;
+
+	    case "cheat": player.cheat(); break;
 				
 	    default: 
 		System.out.println("Unvalid input");
@@ -180,11 +182,12 @@ public class World extends BuildWorld {
     private void pickUp(String item) {
 	System.out.println("pick up up up " + item);
     }
-
+    //todo: inget krav enligt specifikationen men om vi orkar kan vi
+    //fixa så att lärarna kan prata
     private void talk(String studentName) {
 	if (studentName == null) System.out.println("Unvalid input");
-	Student s = currentRoom.studentInRoom();
-	if (s != null && ((s.getName()).equalsIgnoreCase(studentName))) {
+	Student s = currentRoom.studentInRoom(studentName);
+	if (s != null) {
 	    String words = s.talk();
 	    System.out.println(words); 
 	}		
@@ -192,9 +195,9 @@ public class World extends BuildWorld {
     }
     private void trade(String studentName){
 	if (studentName == null) System.out.println("Unvalid input");
-	Student s = currentRoom.studentInRoom();
-	if (s != null && ((s.getName()).compareToIgnoreCase(studentName) == 0) ) {
-	    System.out.println("Trade book"); 
+	Student s = currentRoom.studentInRoom(studentName);
+	if (s != null) {
+	    System.out.println("Trade b-b-b-book"); 
 	}
 	else System.out.println("That's not a student.");
     }

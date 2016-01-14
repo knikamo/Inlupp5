@@ -38,9 +38,9 @@ public class Course {
 		
 	if (hasBook) {
 	    String wrongOption = "You have this course book and you know ";
-	    if ("a" != correctAlt) wrongOption += "'a' ";
-	    else if ("b" != correctAlt) wrongOption += "'b' ";
-	    else if ("c" != correctAlt) wrongOption += "'c' ";
+	    if (!(correctAlt.equals("a"))) wrongOption += "'a' ";
+	    else if (!(correctAlt.equals("b"))) wrongOption += "'b' ";
+	    else if (!(correctAlt.equals("a"))) wrongOption += "'c' ";
 	    wrongOption += "is NOT the correct answer.";
 	    System.out.println(wrongOption);
 	}

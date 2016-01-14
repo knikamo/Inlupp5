@@ -1,4 +1,20 @@
-Kaffekokning i pumpa av ohärdat glas;Annie Melin;1965;2
-Aktier;Casper Strömberg;1978;3
-Algebra-bok;Lowe;2007;1
+Kaffekokning;Annie Melin;1965;2
+Kaffekokning 2;Annie Melin;1966;2
+Kaffekokning 3;Annie Melin;1967;2
+Algebra-book 1;Casper Strömberg;1978;3
+Algebra-book 2;Casper Strömberg;1979;3
+Algebra-book 3;Casper Strömberg;1980;3
 Interesting Book;David Schaffer;2003;3
+Interesting Book 2;David Schaffer;2004;3
+Interesting Book 3;David Schaffer;2005;3
+J-book;King J;1980;1
+J2;King J;1981;1
+J3;King J;1982;1
+Learn C;Camilla Carlsson;1973;2
+Pointers;Camilla Carlsson;1974;2
+MagiC;Camilla Carlsson;1975;2
+x1;Axel Square;2001;2
+x2;Axel Square;2002;2
+x3;Axel Square;2003;2
+x4;Axel Square;2004;2
+x5;Axel Square;2005;2
