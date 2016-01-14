@@ -12,9 +12,7 @@ public class Backpack implements ListToString {
 	maxVolume = 10.0;
 	currentVolume = 0.0;
 	items = new ArrayList<Item>();
-
     } 
-
 
     // Add and checks if valid add
     public Boolean addToBackpack (Item addItem) {

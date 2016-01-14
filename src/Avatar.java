@@ -15,10 +15,15 @@ public class Avatar extends Creature {
 	this.completedCourses = new ArrayList<String>();
 	backpack.addToBackpack(new Key());		
     }
+
     // TODO: ta bort när spelet är färdigt
     public void cheat(){
 	this.hp = 180;
 	this.ongoingCourses = new ArrayList<String>();
+	this.backpack = new Backpack();
+	for(int i = 0; i < 10; i++) {
+	    backpack.addToBackpack(new Key());
+	}
     }
 
     public void changeCredits(int hp) {
