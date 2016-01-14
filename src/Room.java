@@ -62,10 +62,10 @@ public class Room /*implements ListToString*/ {
 	    System.out.println("That's just a wall.");
 	}
     }
-    //todo: eventuellt lägga in stöd för stora bokstäver
+
     private int directionToInt(String direction) {
 	int i;
-	switch (direction) {
+	switch (direction.toLowerCase()) {
 	case "north": i = 0; break;
 	case "n": i = 0; break;
 	case "east": i = 1; break;
