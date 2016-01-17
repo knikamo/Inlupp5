@@ -2,7 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/** Initiate a MUD-game */
 public class MudGame extends World {
     public static void main(String[] args) throws InterruptedException {
 	System.out.println("\n============================================\n-------- Welcome to our SUD-game! ----------\n============================================\n");

@@ -1,20 +1,25 @@
 import java.util.ArrayList;
 import java.lang.IndexOutOfBoundsException;
-
+/** Represents a backpack */
 public class Backpack implements ListToString {
+    /** The maximum volume the backpack can hold*/
     private double maxVolume;
+    /** The total volume of all items in the backpack */
     private double currentVolume;
+    /** All items in the backpack */
     private ArrayList<Item> items;
 
-    // set maxvolume to 10
-    // set currentvolume to 0
+    
+    /** Creates a new empty backpack with the maximum volume 10 litres*/
     public Backpack () { 
 	maxVolume = 10.0;
 	currentVolume = 0.0;
 	items = new ArrayList<Item>();
     } 
 
-    // Add and checks if valid add
+    /** Adds an item to the backpack 
+     * @param addItem the item to put in the backpack
+     * @return true if the item was added succesfully, otherwise false. */
     public Boolean addToBackpack (Item addItem) {
 	if(addItem == null) {
 	    return false;
@@ -24,8 +29,7 @@ public class Backpack implements ListToString {
 	Boolean added = false;
 
 	double checkSpace = currentVolume+itemVolume;
-	if(checkSpace<=maxVolume)
-	    {
+	if(checkSpace<=maxVolume) {
 		currentVolume += itemVolume;
 		(this.items).add(addItem);
 		added = true;
@@ -38,17 +42,20 @@ public class Backpack implements ListToString {
 
     }
 
-    // Drop and checks if valid drop
+     /** Removes an item to the backpack 
+     * @param dropItem the item to drop from backpack
+     * @return true if the item was removed succesfully, otherwise false. */
     public Boolean dropFromBackpack (Item dropItem) {
 	double itemVolume = dropItem.getVolume();
 	Boolean hasDropped = (this.items).remove(dropItem);
-	if (hasDropped)
-	    {
+	if (hasDropped) {
 		currentVolume -= itemVolume;
 	    }
 	return hasDropped;
     }
-
+    /** Checks it there's a key in the backpack
+     * @return A key if the backpack contains a key, otherwise null.
+     */
     public Key hasKey() {
 	for (int i = 0; i < items.size(); i++) {
 	    Item item = items.get(i);
@@ -59,6 +66,10 @@ public class Backpack implements ListToString {
 	}
 	return null;
     }
+    /** Checks it there's a specifik book in the backpack
+     * @param bookName the name of the book to look for in the backpack
+     * @return The book if the backpack contains a key, otherwise null.
+     */
     public Book hasBook(String bookName) {
 	for (int i = 0; i < items.size(); i++) {
 	    Item item = items.get(i);
@@ -72,7 +83,9 @@ public class Backpack implements ListToString {
 	}
 	return null;
     }
-
+    /** Creates a string with all the items in the backpack
+	@return a string with all the items in the backpack
+    */
     public String toString() {
 	String s = "Backpack: ";
 	try {
@@ -83,7 +96,10 @@ public class Backpack implements ListToString {
 	return s;
 
     }
-
+    /** Creates a string of an array list 
+     * @param arrList the array list
+     * @return the content of the array list as an string separated with commas.
+     */
     public String arrListToString(ArrayList arrList) throws IndexOutOfBoundsException {
 	String s;
 	Object current = arrList.get(0);

@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.management.RuntimeErrorException;
 import java.lang.Exception;
-
+/** This class contains methods to build the MUD-game world */
 abstract class BuildWorld {
 
     private static ArrayList<String[]> textfileToSringArr(String filename) throws EmptyFileException {
@@ -53,8 +53,12 @@ abstract class BuildWorld {
 	return allLines;
 
     }
-
-
+    /** Creates rooms with input from a file
+     * <pre> The file is not empty and each line of the file represents a room on the format: <br> roomName;northRoomName;eastRoomName;southRoomName;westRoomName;northDoor;eastDoor;southDoor;westDoor; <br> *roomName must match one of the roomNames in the file<br>At least one of the rooms must have only one door.</pre>
+     * @param filename The name of the file containing information about the rooms
+     * @return a list of rooms
+     */
+    
     public static ArrayList<Room> createRooms(String filename) {
 	ArrayList<String[]> allRoomsInfo = new ArrayList<String[]>();
 	try {
@@ -77,7 +81,11 @@ abstract class BuildWorld {
 	return gameMap;
     }
 
-
+    /** Creates books with input from a file
+     * <pre> The file is not empty and each line of the file represents a book on the format: <br> bookName;Author;year;volume </pre>
+     * @param filename The name of the file containing information about the books
+     * @return A list of books
+     */
 
     public static ArrayList<Book> createBooks(String filename) {
 	ArrayList<String[]> bookInfo = new ArrayList<String[]>();
@@ -113,8 +121,15 @@ abstract class BuildWorld {
 	}
 	return null;
     }
-
-
+      /** Creates courses with input from a file and connects each course with its book
+     * <pre> The file is not empty and each line of the file represents a course on the format: 
+     * <br> courseName;bookName;credits;question;alternativ1;alternative2;alternativ3;correctAlternative 
+     * <br> CorrectAlternative is "a" if alternative1 is the correct answer 
+     * <br> bookName matches the name of a book in the list of books</pre>
+     * @param filename The name of the file containing information about the books
+     * @param books A list of books
+     * @return A list of courses
+     */
     public static ArrayList<Course> createCourses(String filename, ArrayList<Book> books) {
 	ArrayList<String[]> courseInfo = new ArrayList<String[]>();
 	try {
@@ -148,7 +163,13 @@ abstract class BuildWorld {
 	}
 	return courses;
     }
-	
+    /** Creates teachers with input from a file and connects the teachers to a course
+     * @param filename The name of the file containing information about the teachers
+     * @param courses A list of courses
+     * <pre> The file is not empty and each line of the file represents a name of a teacher on the format: 
+     * <br> Gunnar <br> Britta </pre>
+     * @return A list of teachers
+     */
     public static ArrayList<Teacher> createTeachers(String filename, ArrayList<Course> courses) {
 	ArrayList<String[]> teacherInfo = new ArrayList<String[]>();
 	try {
@@ -168,7 +189,13 @@ abstract class BuildWorld {
 	}
 	return teachers;
     }
-
+    /** Creates students with input from a file and connect each student with a completed course and a ongoing course.
+     * @param filename The name of the file containing information about the teachers
+     * @param courses A list of courses
+     * <pre> The file is not empty and each line of the file represents a name of a teacher on the format: 
+     * <br> Karro <br> Patrik </pre>
+     * @return A list of students
+     */
 
     public static ArrayList<Student> createStudents(String filename, ArrayList<Course> courses) {
 	ArrayList<String[]> studentInfo = new ArrayList<String[]>();

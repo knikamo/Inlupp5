@@ -10,8 +10,9 @@ clean:
 
 doc:
 	javadoc -d javadoc/MudGame_doc/ -sourcepath src/*.java
+	#lägg till -private efter javadoc för att generera doc för allt som är private
 
-viewdoc:
+view:
 	open javadoc/Mudgame_doc/index.html
 
 test:
