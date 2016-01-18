@@ -83,7 +83,11 @@ public class World extends BuildWorld {
 	    case "show":	
 		if (twoWords && splitInput[1].toLowerCase().equals("hp")) 
 		    System.out.println("Current HP: " + player.getHp()); break;
-		
+		if (twoWords && splitInput[1].toLowerCase().equals("ongoing")
+		    player.printOngoing();
+		if (twoWords && splitInput[1].toLowerCase().equals("completed")
+		    player.printCompleted();
+	
 	    case "enroll": 
 		if (twoWords)
 		    enrollCourse(splitInput); break;
@@ -109,7 +113,8 @@ public class World extends BuildWorld {
 	    case "use": 
 		if (threeWords && splitInput[1].toLowerCase().equals("key"))
 		    useKey(splitInput[2]); break;
-				
+			
+			
 	    case "exit": continueGame = false; break;
 
 	    case "cheat": player.cheat(); break;
@@ -137,6 +142,8 @@ public class World extends BuildWorld {
 	help += "pick up x\tpick up item x\n";
 	help += "show hp \tshows your current hp\n";
 	help += "talk x\t\ttalk to the student with name x\n";
+	help += "show ongoing\tshow ongoing courses";
+	help += "show completed\tshow completed courses";
 	help += "use key x\tunlock the door in direction x\n";
 	help += "exit\t\texit game\n";	
 		
