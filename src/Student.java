@@ -36,7 +36,7 @@ public class Student extends Creature {
     }
 
     public String talk() {
-	String studentInfo = "Hello, I'm " + getName();
+	String studentInfo = getName() " says: Hello, I'm " + getName();
 	studentInfo += " and I study " + ongoingCourse.getName() + ".";
 	studentInfo += " I've finished the course " + completedCourse.getName() + ".\n";
 	if (ongoingBook == null && completedBook != null) {
