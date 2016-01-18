@@ -22,8 +22,10 @@ public class Sfinx extends Creature {
     public void graduate(Avatar avatar) {
 	if (avatar.readyForExam()) {
 	    System.out.println("Diploma!");
+	    //TODO: print courses
+	    System.exit(1);
 	}
-
+	else System.out.println(this.talk());
     }
 
     public String toString() {

@@ -196,16 +196,19 @@ public class World extends BuildWorld {
     private void pickUp(String[] input) {
 	System.out.println(currentRoom.arrListToString(currentRoom.getItems()));
 	String item = "";
-	for (int i = 2; i < item.length(); i++){
+	for (int i = 2; i < input.length; i++){
 	    item += input[i];
+
+	    if (i < input.length -1) {
+		item += " ";
+	    }
 	}
 	
-	System.out.println("You are trying to pick up: " + item);
-	Item i = null;
+       	Item i = null;
 	if(item.toLowerCase().equals("key")) {
 	    i = currentRoom.hasKey();
 	} else {
-	    i = currentRoom.hasBook(item); //TODO; kolla så att det är caseInsensitive
+	    i = currentRoom.hasBook(item);
 	}	   
 	if (i != null) {
 	    Boolean pickedup = player.pickUp(i);

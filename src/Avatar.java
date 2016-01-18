@@ -89,6 +89,7 @@ public class Avatar extends Creature {
      * @param course The name of the course
      */    
     public void addOngoing(String course) {
+	System.out.println("Your course add ongoing: " + course);
 	ongoingCourses.add(course);
     }
     /** Adds a course to the avatar's completed courses.
@@ -96,6 +97,7 @@ public class Avatar extends Creature {
      * @param hp The course's credits
      */
     public void addCompleted(String course, int hp) {
+	System.out.println("Your course add compl: " + course);
 	ongoingCourses.add(course);
 	changeCredits(hp);
     }
@@ -103,14 +105,16 @@ public class Avatar extends Creature {
      * @param course The name of the course
      */    
     public void removeOngoing(String course) {
-	ongoingCourses.add(course); //remove borde det va?
+	System.out.println("Your course remove ong: " + course);
+	ongoingCourses.remove(course); //remove borde det va?
     }
     /** Removes a course from the avatar's completed courses.
      * @param course The name of the course
      * @param hp The course's credits
      */
     public void removeCompleted(String course, int hp) {
-	ongoingCourses.add(course); //remove??
+	System.out.println("Your course remove comp: " + course);
+	ongoingCourses.remove(course); //remove??
 	changeCredits(hp);
     }
     /** Checks if the avatar has a bookkey
@@ -156,6 +160,24 @@ public class Avatar extends Creature {
      */
     public int getHp() {
 	return this.hp;
+    }
+
+    public void printOngoing() {
+	System.out.println("Your ongoing courses:");
+	for (int i = 0; i < (this.ongoingCourses).size(); i++){
+	    System.out.println(ongoingCourses.get(i));
+	}
+	System.out.println("-------------------------");
+	
+    }
+
+    public void printCompleted() {
+	System.out.println("Your completed courses:");
+	for (int i = 0; i < (this.completedCourses).size(); i++){
+	    System.out.println(completedCourses.get(i));
+	}
+	System.out.println("-------------------------");
+	
     }
 
 }
