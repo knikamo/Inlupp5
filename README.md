@@ -1,17 +1,10 @@
 # Inlupp5
 Inlupp 5, IOOPM 2015
 
-###Todo först
-* svarsalternativ ska försvinna om man har kursboken
-* fixa så att man kan svara a/b/c på en fråga
-* trade: ge bok. Få tillbaks completedBook eller answer
-* talk och graduate när man kommer in i sfinxens rum
-* flytta kurs från avslutad till oavslutad (och tvärtom)
-* pick up på böcker, just nu skickas bara ett ord in.
-* skriva ut diplom
-
-###Todo senare
-* hitta på frågor till kurserna
-* skriva dokumentation
-* göra tester JUnit
-* bli kodgranskad
+###Todo
+* hitta på frågor till kurserna, ta bort lite kurser och ändra hp (Patrik) (se till att de 6 understa är 10 hp kurser
+* ändra rummen (Karro)
+* fler quotes till Sfinx (Karro och Patrik)
+* skriva dokumentation (Karro)
+* göra tester JUnit (Patrik)
+* bli kodgranskad (Maila och fråga om vi måste bli kodgranskade av någon när vi bokar in en tid)
