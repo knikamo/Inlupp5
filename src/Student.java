@@ -25,6 +25,10 @@ public class Student extends Creature {
 	return completedBook;
     }
 
+    public String getOngoingCourse() {
+	return ongoingCourse;
+    }
+
     public String toString() {
 	return getName();
     }
