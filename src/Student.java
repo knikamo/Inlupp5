@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 public class Student extends Creature {
-    private String ongoingCourse;
-    private String completedCourse;
+    private Course ongoingCourse;
+    private Course completedCourse;
     private Book ongoingBook;
     private Book completedBook;
     private boolean hasAnswer;
 
-    public Student(String name, String ongoingCourse, String completedCourse, Book completedBook) {
+    public Student(String name, Course ongoingCourse, Course completedCourse, Book completedBook) {
 	super(name);
 	this.ongoingCourse = ongoingCourse;
 	this.completedCourse = completedCourse;
@@ -25,7 +25,7 @@ public class Student extends Creature {
 	return completedBook;
     }
 
-    public String getOngoingCourse() {
+    public Course getOngoingCourse() {
 	return ongoingCourse;
     }
 
