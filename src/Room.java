@@ -154,14 +154,20 @@ public class Room /*implements ListToString*/ {
     }
 
     public void enterRoom() {
+	Sfinx sfinx = sfinxInRoom();
+	Avatar a  = avatarInRoom();
+	
+	if(sfinx != null) {
+	    sfinx.graduate(a);
+	    return;
+	} 
 	Teacher t = teacherInRoom();
-	Avatar a = avatarInRoom();
 
 	if (t != null && a != null) {
 	    t.askQuestion(a);
 	}
-	else System.out.println("something wrong");
     }
+    
     public void addToRoom(Object o) {
 	if (o instanceof Item) {
 	    Item i = (Item) o;

@@ -60,13 +60,14 @@ public class Course {
 	    wrongOption += "is NOT the correct answer.";
 	    System.out.println(wrongOption);
 	}
+	System.out.print("> ");
 	Scanner reader = new Scanner(System.in);
 	
 	String input = reader.nextLine();
 
 	while (!(input.equals("a") || input.equals("b") || input.equals("c"))) {
 	    System.out.println("Input: "+input);
-	    System.out.println("Not a valid answer, try again with 'a', 'b' or 'c' ");
+	    System.out.println("Not a valid answer, try again with 'a', 'b' or 'c'\n> ");
 	    reader.reset();
 	    input = reader.nextLine();
 	}
