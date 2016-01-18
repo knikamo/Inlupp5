@@ -232,17 +232,17 @@ public class Room /*implements ListToString*/ {
 	try {
 	    itemString = arrListToString(items); } 
 	catch (IndexOutOfBoundsException e) {
-	    itemString = "-----";
+	    //itemString = "-----";
 	}
 	try {
 	    studentString = arrListToString(creatures, true); } 
 	catch (IndexOutOfBoundsException e) {
-	    studentString = "-----";
+	    //studentString = "-----";
 	}
 	try {
 	    teacherString = arrListToString(creatures, false); } 
 	catch (IndexOutOfBoundsException e) {
-	    teacherString = "-----";
+	    // teacherString = "-----";
 	}
 
 	String s = "============================================\n";

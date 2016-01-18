@@ -1,5 +1,17 @@
-Room 1357;Room 1356;X;Room 1358;Hallway 4;False;X;False;False
-Hallway 4;X;Room 1357;Hallway 5;X;X;False;False;X
-Hallway 5;Hallway 4;Room 1358;X;X;False;False;X;X
-Room 1358;Room 1357;X;X;Hallway 5;False;X;X;False
-Room 1356;X;X;Room 1357;X;X;X;False;X
+Broom Cupboard;X;X;Hallway 6;X;X;X;open;X
+Room 1247;X;Hallway 6;X;X;X;X;X;X
+Hallway 6;Broom Cupboard;Office 2;Hallway 5;Room 1247;X;X;open;X
+Office 2;X;X;X;Hallway 6;X;X;X;X
+Room 1246;X;Hallway 5;X;X;X;X;X;X
+Hallway 5;Hallway 6;Office 1;Hallway 4;Room 1246;open;X;open;X
+Office 1;X;X;X;Hallway 5;X;X;X;X
+Room 1245;X;Hallway 4;X;X;X;X;X;X
+Hallway 4;Hallway 5;Hallway 3;X;Room 1245;open;open;X;X
+Hallway 3;X;Secret Room;Hallway 2;Hallway 4;X;X;open;open
+Secret Room;X;X;X;Hallway 3;X;X;X;X
+Room 1213;X;Hallway 2;X;X;X;X;X;X
+Hallway 2;Hallway 3;Elevator;Hallway 1;Room 1213;open;X;open;X
+Elevator;X;X;X;Hallway 2;X;X;X;X
+Room 1212;X;Hallway 1;X;X;X;X;X;X
+Hallway 1;Hallway 2;Skrubben;X;Room 1212;open;X;X;X
+Skrubben;X;X;X;Hallway 1;X;X;X;X
