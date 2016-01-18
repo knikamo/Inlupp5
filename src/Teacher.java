@@ -29,7 +29,7 @@ public class Teacher extends Creature {
 	int hp = course.getCredits();
 	int achievedCredits = 0;
 	Book b = getBook(); //b är null, något är fel när böcker skapas
-	Boolean hasBook = a.hasBook(b.getName());
+	Boolean hasBook = (a.hasBook(b.getName()) != null);
 	if (hasBook) System.out.println("You have the book woho!");
 	String courseName = getCourseName();
 	Boolean completedCourse = a.completedCourse(courseName);

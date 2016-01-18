@@ -18,12 +18,10 @@ abstract class BuildWorld {
 	catch (FileNotFoundException e) {
 	    System.out.println("File not found....  " + e.getMessage());
 	    System.exit(1);
-	    //throw new RuntimeErrorException(e, "File not found!!!");
 	}
 	catch (IOException e) {
 	    System.out.println("Caught IOException...." + e.getMessage());
 	    System.exit(1);
-	    //throw new RuntimeErrorException(e, "IO EXCEPTION");
 	} 
 
 	if (lines.isEmpty()) throw new EmptyFileException("This file is empty");
@@ -193,7 +191,7 @@ abstract class BuildWorld {
      * @param filename The name of the file containing information about the teachers
      * @param courses A list of courses
      * <pre> The file is not empty and each line of the file represents a name of a teacher on the format: 
-     * <br> Karro <br> Patrik </pre>
+     * <br> Karro <br> Patrik <br> Tha number of students is around half the amount of courses. </pre>
      * @return A list of students
      */
 
@@ -213,17 +211,28 @@ abstract class BuildWorld {
 	    String[] crntInfo = studentInfo.get(i);
 	    String name = crntInfo[0];
  			
-	    String ongoing = courses.get(i+1).getName();
-	    String completed = courses.get(i).getName();
-	    Book book;
-	    if (i % 2 == 0) book = courses.get(i).getBook(); //varannan student får en completed  bok
-	    else book = null;
+	    Course ongoing = courses.get(limit-i);//.getName();
+	    Course completed = courses.get(i); //.getName();
+	    Book book = courses.get(i).getBook();
+	    System.out.println("Student has: " + book);
+	   
 	    Student s = new Student(name, ongoing, completed, book);
 	    students.add(s);
 	}
 	return students;
     }
 
+    public static Avatar createAvatar(ArrayList<Course> courses, String name) {
+	Avatar a = new Avatar(name);
+	for(int i = courses.size() - 6; i < courses.size(); i++){
+	    Course crntCourse = courses.get(i);
+	    String crntName = crntCourse.getName();
+	    int hp = crntCourse.getCredits();
+	    a.addCompleted(crntName, hp);
+	}
+	return a;
+    }
+    
     private static void connectRooms(ArrayList<Room> rooms, ArrayList<String[]> allRoomsInfo) throws NonExistingRoomException {
 	for (int i = 0; i < rooms.size(); i++) {
 	    String[] crntInfo = allRoomsInfo.get(i);

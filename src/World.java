@@ -41,9 +41,7 @@ public class World extends BuildWorld {
 
 
     public void createWorld(String name) {
-	this.player = new Avatar(name);
-	//add courses (total 60hp) to avatars "completed courses"
-	//update amount of hp
+        
 	this.rooms = createRooms("rooms.txt");
 	this.numberOfRooms = rooms.size();
 	System.out.print("Number of rooms: " + numberOfRooms + "\n");
@@ -55,6 +53,8 @@ public class World extends BuildWorld {
 	this.teachers = createTeachers("teachers.txt", this.courses);
 	this.students = createStudents("students.txt", this.courses);
 
+	this.player = createAvatar(courses, name);
+	
 	placeKeys();
 	placeBooks();
 	placeCreatures();
@@ -82,12 +82,16 @@ public class World extends BuildWorld {
 	
 	    case "show":	
 		if (twoWords && splitInput[1].toLowerCase().equals("hp")) 
-		    System.out.println("Current HP: " + player.getHp()); break;
-		if (twoWords && splitInput[1].toLowerCase().equals("ongoing")
+		    System.out.println("Current HP: " + player.getHp());
+		if (twoWords && splitInput[1].toLowerCase().equals("ongoing"))
 		    player.printOngoing();
-		if (twoWords && splitInput[1].toLowerCase().equals("completed")
+		if (twoWords && splitInput[1].toLowerCase().equals("completed"))
 		    player.printCompleted();
-	
+		break;
+
+	    case "drop":
+		if (twoWords)
+		    drop(splitInput); break;
 	    case "enroll": 
 		if (twoWords)
 		    enrollCourse(splitInput); break;
@@ -136,14 +140,16 @@ public class World extends BuildWorld {
 	String help = "--------------------------------------------\n";
 	help += "COMMANDS\tEXPLANATION\n";
 	help += "help\t\tshows this help menu\n";
+	help += "drop x\t\tdrop item x\n";
 	help += "enroll x\tenroll the course x\n";
 	help += "go x\t\tgoes to the room in direction x\n";
 	help += "inventory\tshows items in your backpack\n";
 	help += "pick up x\tpick up item x\n";
 	help += "show hp \tshows your current hp\n";
 	help += "talk x\t\ttalk to the student with name x\n";
-	help += "show ongoing\tshow ongoing courses";
-	help += "show completed\tshow completed courses";
+	help += "trade x\t\ttrade a book with student x\n";
+	help += "show ongoing\tshow ongoing courses\n";
+	help += "show completed\tshow completed courses\n";
 	help += "use key x\tunlock the door in direction x\n";
 	help += "exit\t\texit game\n";	
 		
@@ -168,11 +174,11 @@ public class World extends BuildWorld {
 		System.out.println("You've enrolled " + teachersCourse);
 	    }
 	    else
-		System.out.print("Unvalid course name: " + courseName); //+ "\nReal name: " + teachersCourse + "\n");
+		System.out.print("Unvalid course name: " + courseName); 
 	}
     }
 
-    private void go(String direction) {
+  private void go(String direction) {
 	Room newRoom = currentRoom.move(direction);
 	if (newRoom != null) {
 	    this.currentRoom = newRoom;
@@ -192,9 +198,7 @@ public class World extends BuildWorld {
     }
 	
 
-    // TODO: String item blir max ett ord vid "pick up 'x3' (book)" - fixat nu tror jag
     private void pickUp(String[] input) {
-	System.out.println(currentRoom.arrListToString(currentRoom.getItems()));
 	String item = "";
 	for (int i = 2; i < input.length; i++){
 	    item += input[i];
@@ -209,15 +213,44 @@ public class World extends BuildWorld {
 	    i = currentRoom.hasKey();
 	} else {
 	    i = currentRoom.hasBook(item);
-	}	   
+	}
+	
 	if (i != null) {
 	    Boolean pickedup = player.pickUp(i);
-	    currentRoom.removeItem(i);
-	    if (pickedup) System.out.println("You picked up " + item);
-	} else {
-	    System.out.println("There is no " + item + " to pick up! Stop trying to cheat!");
+	   
+	    if (pickedup) {
+		currentRoom.removeItem(i);	
+		System.out.println("You picked up " + item);
+	    } else {
+		System.out.println("There is no " + item + " to pick up! Stop trying to cheat!");
+	    }
+	}       
+    }
+
+    private void drop(String[] input) {
+	String item = "";
+	for (int i = 1; i < input.length; i++){
+	    item += input[i];
+
+	    if (i < input.length -1) {
+		item += " ";
+	    }
 	}
-    }       
+	
+       	Item i = null;
+	if(item.toLowerCase().equals("key")) {
+	    i = player.hasKey();
+	} else {
+	    i = player.hasBook(item);
+	}	   
+	if (i != null) {
+	    Boolean dropped = player.drop(i);
+	    currentRoom.addToRoom(i);
+	    if (dropped) System.out.println("You dropped " + item);
+	} else {
+	    System.out.println("There is no " + item + " to drop!");
+	}
+    }  
 
 
     //todo: inget krav enligt specifikationen men om vi orkar kan vi
@@ -231,22 +264,37 @@ public class World extends BuildWorld {
 	}		
 	else System.out.println("That's not a student.");
     }
+    
     private void trade(String studentName){
-	if (studentName == null) System.out.println("Unvalid input");
+	
 	Student s = currentRoom.studentInRoom(studentName);
 	if (s != null) {
-	    System.out.println("Trade b-b-b-book"); 
+	    
+	    Book studentBook = s.getCompletedBook();
+	    Course studentCourse = s.getOngoingCourse();
+	    Book wantedBook = studentCourse.getBook();
+	    Book avatarBook = player.hasBook(wantedBook.getName());
+	    if (wantedBook.equals(avatarBook)) {
+	        player.drop(avatarBook);
+		s.setOngoingBook(avatarBook);
+		System.out.println("You just traded a book with " + s.getName());
+		Boolean pickedUp = player.pickUp(studentBook);
+		if (pickedUp == false) {
+		    System.out.println(s.getName() + " says: I'll put it on the floor instead.");
+		    currentRoom.addToRoom(studentBook);
+		}
+        
+	    }
+	    else {
+		System.out.println(s.getName() + " says: You don't have the book I want. I want the book "+ wantedBook.getName() + "." );
+	    }
 	}
 	else System.out.println("That's not a student.");
     }
 
     private void useKey(String direction) {
-	//if (command[1].equals("key")) {
-	currentRoom.unlockDoor(direction); //splitinput[2]
-	/* }
-	   else {
-	   System.out.println("Unvalid input");
-	   } */
+	currentRoom.unlockDoor(direction);
+
     }
 
 
@@ -305,10 +353,12 @@ public class World extends BuildWorld {
 
     private void placeBooks() {
 	int numberOfCourses = courses.size();
+	int numberOfStudents = students.size();
 		
-	for (int i = 1; i < numberOfCourses; i+=2) { //alla ojämna index kommer delas ut till rummen helt random
+	for (int i = numberOfStudents; i < numberOfCourses; i++) { 
 	    Course c = courses.get(i);
 	    Book b = c.getBook();
+	    System.out.println("In room: " + b);
 	    placeRandom(b);
 	}
     }

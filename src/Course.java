@@ -67,7 +67,7 @@ public class Course {
 
 	while (!(input.equals("a") || input.equals("b") || input.equals("c"))) {
 	    System.out.println("Input: "+input);
-	    System.out.println("Not a valid answer, try again with 'a', 'b' or 'c'\n> ");
+	    System.out.print("Not a valid answer, try again with 'a', 'b' or 'c'\n> ");
 	    reader.reset();
 	    input = reader.nextLine();
 	}

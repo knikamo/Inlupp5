@@ -16,14 +16,15 @@ public class Sfinx extends Creature {
 	Random random = new Random();
 	int numberOfQuotes = (this.quotes).size();
 	int randomIndex = random.nextInt(numberOfQuotes);
-	return ((this.quotes).get(randomIndex));
+	return ("Sfinx says: " + (this.quotes).get(randomIndex));
     }
 
     public void graduate(Avatar avatar) {
 	if (avatar.readyForExam()) {
-	    System.out.println("Diploma!");
-	    //TODO: print courses
-	    System.exit(1);
+	    System.out.println("DIPLOMA!");
+	    avatar.printCompleted();
+	    System.out.println("YOU GRADUATED");
+	    System.exit(0);
 	}
 	else System.out.println(this.talk());
     }

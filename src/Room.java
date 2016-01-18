@@ -63,12 +63,11 @@ public class Room /*implements ListToString*/ {
     }
 
 
-    // Drop and checks if valid drop
-    public Boolean removeItem (Item dropItem) {
-	Boolean hasDropped = (this.items).remove(dropItem);
-	return hasDropped;
+    // Removes and checks if valid removement
+    public Boolean removeItem (Item removeItem) {
+	Boolean hasRemoved = (this.items).remove(removeItem);
+	return hasRemoved;
     }
-
 
     public void setRooms(Room[] rooms) {
 	this.rooms = rooms;

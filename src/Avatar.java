@@ -16,7 +16,7 @@ public class Avatar extends Creature {
     public Avatar(String name) {
 	super(name);
 	this.backpack = new Backpack();
-	this.hp = 60;
+	this.hp = 0;
 	this.ongoingCourses = new ArrayList<String>();
 	this.completedCourses = new ArrayList<String>();
 	backpack.addToBackpack(new Key());		
@@ -89,7 +89,6 @@ public class Avatar extends Creature {
      * @param course The name of the course
      */    
     public void addOngoing(String course) {
-	System.out.println("Your course add ongoing: " + course);
 	ongoingCourses.add(course);
     }
     /** Adds a course to the avatar's completed courses.
@@ -97,24 +96,22 @@ public class Avatar extends Creature {
      * @param hp The course's credits
      */
     public void addCompleted(String course, int hp) {
-	System.out.println("Your course add compl: " + course);
-	ongoingCourses.add(course);
+	completedCourses.add(course);
 	changeCredits(hp);
     }
     /** Removes a course from the avatar's ongoing courses.
      * @param course The name of the course
      */    
     public void removeOngoing(String course) {
-	System.out.println("Your course remove ong: " + course);
-	ongoingCourses.remove(course); //remove borde det va?
+	ongoingCourses.remove(course);
     }
     /** Removes a course from the avatar's completed courses.
      * @param course The name of the course
      * @param hp The course's credits
      */
     public void removeCompleted(String course, int hp) {
-	System.out.println("Your course remove comp: " + course);
-	ongoingCourses.remove(course); //remove??
+
+	completedCourses.remove(course); 
 	changeCredits(hp);
     }
     /** Checks if the avatar has a bookkey
@@ -127,8 +124,8 @@ public class Avatar extends Creature {
      *	@param bookName the name of the book 
      * @return true if the avatar has the book, otherwise false
      */
-    public Boolean hasBook(String bookName) {
-	return(backpack.hasBook(bookName) != null);
+    public Book hasBook(String bookName) {
+	return backpack.hasBook(bookName);
     }
      /** Adds an item to the backpack
      *	@param i The item to add

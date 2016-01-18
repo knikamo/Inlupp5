@@ -23,8 +23,9 @@ public class Student extends Creature {
     }
 
     public Book getCompletedBook() {
+	Book tmpBook = completedBook;
 	completedBook = null;
-	return completedBook;
+	return tmpBook;
     }
 
     public Course getOngoingCourse() {
@@ -36,7 +37,7 @@ public class Student extends Creature {
     }
 
     public String talk() {
-	String studentInfo = getName() " says: Hello, I'm " + getName();
+	String studentInfo = getName() + " says: Hello, I'm " + getName();
 	studentInfo += " and I study " + ongoingCourse.getName() + ".";
 	studentInfo += " I've finished the course " + completedCourse.getName() + ".\n";
 	if (ongoingBook == null && completedBook != null) {
