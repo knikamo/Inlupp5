@@ -100,7 +100,7 @@ public class World extends BuildWorld {
 
 	    case "pick":
 		if (threeWords && splitInput[1].toLowerCase().equals("up")) 
-		    pickUp(splitInput[2]); break;
+		    pickUp(splitInput); break;
 					
 	    case "talk": 
 		if (twoWords) 
@@ -192,20 +192,25 @@ public class World extends BuildWorld {
     }
 	
 
-    // TODO: String item blir max ett ord vid "pick up 'x3' (book)"
-    private void pickUp(String item) {
+    // TODO: String item blir max ett ord vid "pick up 'x3' (book)" - fixat nu tror jag
+    private void pickUp(String[] input) {
 	System.out.println(currentRoom.arrListToString(currentRoom.getItems()));
-
+	String item = "";
+	for (int i = 2; i < item.length(); i++){
+	    item += input[i];
+	}
+	
+	System.out.println("You are trying to pick up: " + item);
 	Item i = null;
 	if(item.toLowerCase().equals("key")) {
 	    i = currentRoom.hasKey();
 	} else {
-	    i = currentRoom.hasBook(item);
+	    i = currentRoom.hasBook(item); //TODO; kolla så att det är caseInsensitive
 	}	   
 	if (i != null) {
-	    player.getBackpack().addToBackpack(i);
+	    Boolean pickedup = player.pickUp(i);
 	    currentRoom.removeItem(i);
-	    System.out.println("You picked up " + item);
+	    if (pickedup) System.out.println("You picked up " + item);
 	} else {
 	    System.out.println("There is no " + item + " to pick up! Stop trying to cheat!");
 	}

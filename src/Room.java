@@ -2,37 +2,40 @@ import java.util.ArrayList;
 import java.lang.NullPointerException;
 import java.lang.IndexOutOfBoundsException;
 import java.lang.Math;
-
+/** Represents a room i the MUD-game */
 public class Room /*implements ListToString*/ {
+    /** The name of the room */
     private String name;
+    /** The connecting rooms */
     private Room[] rooms;
+    /** Information about the connecting doors */
     private Boolean[] openDoors;
+    /** A list of items in the room */
     private ArrayList<Item> items;
+    /** A list of creatures in the room */
     private ArrayList<Creature> creatures;
 
-    /*
-      public Room(String name, Boolean[] od, ArrayList<Item> i, ArrayList<Creature> c) {
-      this.name = name;
-      this.openDoors = od;
-      this.items = i;
-      this.creatures = c;
-      } */
-
+    /** Creates a new room with a name and information about the doors 
+     * @param name The name of the room
+     * @param od An array with information (open/closed) about the doors */
     public Room(String name, Boolean[] od) {
 	this.name = name;
 	this.openDoors = od;
 	this.items = new ArrayList<Item>();
 	this.creatures = new ArrayList<Creature>();
     }
-
+    /** Returns the name of the room
+     * @return the name of the room 
+     */
     public String getName() throws NullPointerException {
 	return this.name;
     }
-
+    /** Denna funktion kan tas bort om vi tar bort först raden i world.java i funktionen pickUp */
     public ArrayList<Item> getItems() {
 	return this.items;
     }
-
+    /** Checks if a room has a key. 
+     * @return a key if the room has a key, otherwise null */
     public Key hasKey() {
 	for (int i = 0; i < items.size(); i++) {
 	    Item item = items.get(i);
