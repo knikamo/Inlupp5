@@ -20,6 +20,11 @@ public class Student extends Creature {
     public void setOngoingBook(Book b){
 	this.ongoingBook = b;
     }
+
+    public Book getCompletedBook() {
+	return completedBook;
+    }
+
     public String toString() {
 	return getName();
     }
