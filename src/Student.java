@@ -35,8 +35,8 @@ public class Student extends Creature {
 
     public String talk() {
 	String studentInfo = "Hello, I'm " + getName();
-	studentInfo += " and I study " + ongoingCourse + ".";
-	studentInfo += " I've finished the course " + completedCourse + ".";
+	studentInfo += " and I study " + ongoingCourse.getName() + ".";
+	studentInfo += " I've finished the course " + completedCourse.getName() + ".";
 	return studentInfo;
     }
 }
