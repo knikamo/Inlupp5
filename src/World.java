@@ -9,15 +9,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class World extends BuildWorld {
-    ArrayList<Room> rooms;
-    Room currentRoom;
-    int numberOfRooms;
-    Avatar player;
-    int sfinxRoomIndex;
-    ArrayList<Book> books;
-    ArrayList<Course> courses;
-    ArrayList<Teacher> teachers;
-    ArrayList<Student> students;
+    private ArrayList<Room> rooms;
+    private Room currentRoom;
+    private int numberOfRooms;
+    private Avatar player;
+    private int sfinxRoomIndex;
+    private ArrayList<Book> books;
+    private ArrayList<Course> courses;
+    private ArrayList<Teacher> teachers;
+    private ArrayList<Student> students;
 
     public World () {
 	numberOfRooms = 0;

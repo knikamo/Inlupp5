@@ -1,5 +1,12 @@
+CLASSPATH=".:/home/patrik/Downloads/junit-4.12.jar"
+
 all:
 	javac src/*.java
+
+test: 
+	javac -cp $(CLASSPATH) -g src/*.java
+	cd src && java -cp $(CLASSPATH):hamcrest-core-1.3.jar org.junit.runner.JUnitCore AvatarTest TestBackpack TestBook TestRoom
+
 
 run:
 	java -cp src MudGame
@@ -15,8 +22,8 @@ doc:
 view:
 	open javadoc/Mudgame_doc/index.html
 
-test:
-	javac src/*.java
-	java -ea -cp src Tests
+#test:
+#	javac src/*.java
+#	java -ea -cp src Tests
 
 #-ea är för att assert ska fungera
