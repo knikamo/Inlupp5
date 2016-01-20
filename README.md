@@ -12,5 +12,4 @@ Inlupp 5, IOOPM 2015
 * ändra rummen  (Karro)
 * fler quotes till Sfinx (Karro och Patrik)
 * skriva dokumentation (Karro)
-* göra tester JUnit (Patrik)
 * bli kodgranskad (Maila och fråga om vi måste bli kodgranskade av någon när vi bokar in en tid)
