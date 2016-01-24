@@ -47,7 +47,9 @@ public class Room /*implements ListToString*/ {
 	return null;
     }
 
-
+    /** Checks if a room has a specific book. 
+     * @param bookName The name of the book.
+     * @returnthe book if the room has it, otherwise null */
     public Book hasBook(String bookName) {
 	for (int i = 0; i < items.size(); i++) {
 	    Item item = items.get(i);
@@ -63,18 +65,30 @@ public class Room /*implements ListToString*/ {
     }
 
 
-    // Removes and checks if valid removement
+    /** Removes an item from the room.
+     * @param removeItem The item to be removed 
+     * @return true if the item was succesfully removed from the room, otherwise false.
+     */
     public Boolean removeItem (Item removeItem) {
 	Boolean hasRemoved = (this.items).remove(removeItem);
 	return hasRemoved;
     }
-
+    /** Sets the neigbour rooms.
+     * @param rooms An array of the four neighbour rooms.
+     */
     public void setRooms(Room[] rooms) {
 	this.rooms = rooms;
     }
+
+    /** Opens a door to the room in one direction
+     * @param i The direction (represented as an int) of the door to open.
+     */
     public void openDoor(int i) {
 	openDoors[i] = true;
     }
+     /** Unlocks a door to one of the neigbour rooms.
+     * @param direction The direction (represented as an string) of the door to unlock.
+     */
     public void unlockDoor(String direction) {
 	int i = directionToInt(direction);
 	if (i > 4) return;
@@ -124,7 +138,10 @@ public class Room /*implements ListToString*/ {
 	else if (openDoors[direction]) return "Open"; //Opened Door
 	else return "Closed"; //Locked Door
     }
-
+    /** Moves from the room to a neighbour room.
+     * @param direction The direction to move.
+     * @return if the door in the direction is unlocked: the room you just moved to, else null
+     */
     public Room move(String direction) {
 	int i = directionToInt(direction);
 	if (i > 3) return null;
@@ -151,7 +168,7 @@ public class Room /*implements ListToString*/ {
 	    return null;
 	}
     }
-
+    /** Enter a room */
     public void enterRoom() {
 	Sfinx sfinx = sfinxInRoom();
 	Avatar a  = avatarInRoom();
@@ -166,7 +183,9 @@ public class Room /*implements ListToString*/ {
 	    t.askQuestion(a);
 	}
     }
-    
+    /** Add an object to the room 
+     * @param o The object you want to add to the room 
+     */
     public void addToRoom(Object o) {
 	if (o instanceof Item) {
 	    Item i = (Item) o;
@@ -180,7 +199,9 @@ public class Room /*implements ListToString*/ {
 	    System.out.println("Not a valid object to put in room");
 	}
     }
-
+    /** Checks if there is an avatar in the room
+     * @return the avatar if it is in the room, else null.
+     */
     public Avatar avatarInRoom() {
 	for (int i = 0; i < creatures.size(); i ++) {
 	    Creature crnt = creatures.get(i);
@@ -191,7 +212,9 @@ public class Room /*implements ListToString*/ {
 	}
 	return null;
     }
-
+    /** Checks if there is a teacher in the room
+     * @return the teacher if it is in the room, else null.
+     */
     public Teacher teacherInRoom() {
 	for (int i = 0; i < creatures.size(); i ++) {
 	    Creature crnt = creatures.get(i);
@@ -202,7 +225,9 @@ public class Room /*implements ListToString*/ {
 	}
 	return null;
     }
-
+    /** Checks if there is a sfinx in the room
+     * @return the sfinx if it is in the room, else null.
+     */
     public Sfinx sfinxInRoom() {
 	for (int i = 0; i < creatures.size(); i ++) {
 	    Creature crnt = creatures.get(i);
@@ -213,7 +238,10 @@ public class Room /*implements ListToString*/ {
 	}
 	return null;
     }
-	
+    /** Checks if there is an student in the room
+     * @param name The name of the student to look for.
+     * @return the student if it is in the room, else null.
+     */	
     public Student studentInRoom(String name) {
 	for (int i = 0; i < creatures.size(); i ++) {
 	    Creature crnt = creatures.get(i);
@@ -224,7 +252,9 @@ public class Room /*implements ListToString*/ {
 	}
 	return null;
     }
-
+    /** Returns the room as a string
+     * @return the room as a string
+     */
     public String toString() {
 	String studentString = "";
 	String teacherString = "";
@@ -232,17 +262,14 @@ public class Room /*implements ListToString*/ {
 	try {
 	    itemString = arrListToString(items); } 
 	catch (IndexOutOfBoundsException e) {
-	    //itemString = "-----";
 	}
 	try {
 	    studentString = arrListToString(creatures, true); } 
 	catch (IndexOutOfBoundsException e) {
-	    //studentString = "-----";
 	}
 	try {
 	    teacherString = arrListToString(creatures, false); } 
 	catch (IndexOutOfBoundsException e) {
-	    // teacherString = "-----";
 	}
 
 	String s = "============================================\n";
@@ -284,7 +311,9 @@ public class Room /*implements ListToString*/ {
 
 	return s;
     }
-
+    /** Checks if a room has one door.
+     * @return true if the room has one door, else false.
+     */
     public boolean hasOneDoor() {
 	int numberOfDoors = 0;
 	for (int i = 0; i < 4; i++){
@@ -305,7 +334,7 @@ public class Room /*implements ListToString*/ {
 	for (int i = 1; i < arrList.size(); i++) {
 	    current = arrList.get(i);
 
-	    stud = student && ((current instanceof Student) || (current instanceof Avatar)); //(!(current instanceof Teacher));
+	    stud = student && ((current instanceof Student) || (current instanceof Avatar));
 	    teach = (!(student)) && (current instanceof Teacher);
 	    if (stud || teach) {
 		if (!(s.equals(""))) s += ", ";

@@ -51,8 +51,11 @@ abstract class BuildWorld {
 	return allLines;
 
     }
-    /** Creates rooms with input from a file
-     * <pre> The file is not empty and each line of the file represents a room on the format: <br> roomName;northRoomName;eastRoomName;southRoomName;westRoomName;northDoor;eastDoor;southDoor;westDoor; <br> *roomName must match one of the roomNames in the file<br>At least one of the rooms must have only one door.</pre>
+    /** Creates rooms with input from a file.
+     * <pre> The file is not empty and each line of the file represents a room on the format: 
+     * roomName;northRoomName;eastRoomName;southRoomName;westRoomName;northDoor;eastDoor;southDoor;westDoor 
+     * roomName must match one of the roomNames in the file
+     * At least one of the rooms must have only one door.</pre>
      * @param filename The name of the file containing information about the rooms
      * @return a list of rooms
      */
@@ -79,8 +82,9 @@ abstract class BuildWorld {
 	return gameMap;
     }
 
-    /** Creates books with input from a file
-     * <pre> The file is not empty and each line of the file represents a book on the format: <br> bookName;Author;year;volume </pre>
+    /** Creates books with input from a file.
+     * <pre> The file is not empty and each line of the file represents a book on the format:
+     * bookName;Author;year;volume </pre>
      * @param filename The name of the file containing information about the books
      * @return A list of books
      */
@@ -119,11 +123,11 @@ abstract class BuildWorld {
 	}
 	return null;
     }
-      /** Creates courses with input from a file and connects each course with its book
+      /** Creates courses with input from a file and connects each course with its book.
      * <pre> The file is not empty and each line of the file represents a course on the format: 
-     * <br> courseName;bookName;credits;question;alternativ1;alternative2;alternativ3;correctAlternative 
-     * <br> CorrectAlternative is "a" if alternative1 is the correct answer 
-     * <br> bookName matches the name of a book in the list of books</pre>
+     * courseName;bookName;credits;question;alternativ1;alternative2;alternativ3;correctAlternative 
+     * CorrectAlternative is "a" if alternative1 is the correct answer 
+     * bookName matches the name of a book in the list of books</pre>
      * @param filename The name of the file containing information about the books
      * @param books A list of books
      * @return A list of courses
@@ -161,7 +165,7 @@ abstract class BuildWorld {
 	}
 	return courses;
     }
-    /** Creates teachers with input from a file and connects the teachers to a course
+    /** Creates teachers with input from a file and connects the teachers to a course.
      * @param filename The name of the file containing information about the teachers
      * @param courses A list of courses
      * <pre> The file is not empty and each line of the file represents a name of a teacher on the format: 
@@ -191,7 +195,7 @@ abstract class BuildWorld {
      * @param filename The name of the file containing information about the teachers
      * @param courses A list of courses
      * <pre> The file is not empty and each line of the file represents a name of a teacher on the format: 
-     * <br> Karro <br> Patrik <br> Tha number of students is around half the amount of courses. </pre>
+     * <br> Karro <br> Patrik <br> The number of students is around half the amount of courses. </pre>
      * @return A list of students
      */
 
@@ -221,7 +225,12 @@ abstract class BuildWorld {
 	}
 	return students;
     }
-
+    
+    /** Creates a new avatar with 60hp, 6 completed courses and one key in the backpack.
+     * @param courses The completed courses
+     * @param name The name of the avatar
+     * @return An avatar with 60hp, 6 completed courses and one key in the backpack
+     */
     public static Avatar createAvatar(ArrayList<Course> courses, String name) {
 	Avatar a = new Avatar(name);
 	for(int i = courses.size() - 6; i < courses.size(); i++){
