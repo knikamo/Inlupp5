@@ -14,7 +14,7 @@ public class Sfinx extends Creature {
 	this.quotes.add("Go hard or go home");
 	this.quotes.add("The good things in life does not come easy");
 	this.quotes.add("If you want something, you have to work for it");
-	this.quotes.add("Step out of your comfort zon");
+	this.quotes.add("Step out of your comfort zone");
 	this.quotes.add("Live long and prosper");
 	this.quotes.add("The bigger they are, the harder they fall");
 	this.quotes.add("If you can dream it you can do it");
@@ -24,7 +24,7 @@ public class Sfinx extends Creature {
 	this.quotes.add("Everybody poops");
 	this.quotes.add("The good ones die young");
 	this.quotes.add("Live everyday as if it was your last");
-	this.quotes.add("Don't abuse god's grace");
+	this.quotes.add("Don't abuse God's grace");
 	this.quotes.add("One does not simply walk into Mordor");
 	this.quotes.add("Just do it");
 	this.quotes.add("Live life to the fullest");
