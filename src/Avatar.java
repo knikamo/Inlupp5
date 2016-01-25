@@ -38,13 +38,13 @@ public class Avatar extends Creature {
 	this.hp = this.hp + hp;
     }
     /** Returns the avatar's name with "(you)" after.
-     * @preturn a string representing the avatar
+     * @return a string representing the avatar
      */   
     public String toString() {
 	return (getName() + " (you)");
     }
     /** Returns the avatar's backpack as an string
-     * @preturn a string representing the avatar's backpack
+     * @return a string representing the avatar's backpack
      */
     public String backpackToString() {
 	return backpack.toString();
@@ -148,10 +148,7 @@ public class Avatar extends Creature {
     public Boolean readyForExam() {
 	return (hp >= 180 && ongoingCourses.isEmpty());
     }
-    /** Är denna funktionen nödvändig? vi kan väl använda funktionerna pickup odh drop? */
-    public Backpack getBackpack() {
-	return this.backpack;
-    }
+
     /** Returns the avatar's current credits.
      * @return the avatar's current credits.
      */

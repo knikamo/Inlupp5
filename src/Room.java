@@ -30,10 +30,7 @@ public class Room /*implements ListToString*/ {
     public String getName() throws NullPointerException {
 	return this.name;
     }
-    /** Denna funktion kan tas bort om vi tar bort först raden i world.java i funktionen pickUp */
-    public ArrayList<Item> getItems() {
-	return this.items;
-    }
+
     /** Checks if a room has a key. 
      * @return a key if the room has a key, otherwise null */
     public Key hasKey() {
@@ -49,7 +46,7 @@ public class Room /*implements ListToString*/ {
 
     /** Checks if a room has a specific book. 
      * @param bookName The name of the book.
-     * @returnthe book if the room has it, otherwise null */
+     * @return the book if the room has it, otherwise null */
     public Book hasBook(String bookName) {
 	for (int i = 0; i < items.size(); i++) {
 	    Item item = items.get(i);
