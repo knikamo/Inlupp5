@@ -1,7 +1,9 @@
 CLASSPATH=".:/home/patrik/Downloads/junit-4.12.jar"
-
+SRCFILES:= Avatar Backpack Book BuildWorld Course Creature EmptyFileException Item Key ListToString MudGame NonExistingRoomException Room Sfinx Student Teacher World
+SRCFILES:= $(addprefix src/, $(SRCFILES))
+SRCFILES:= $(addsuffix .java, $(SRCFILES))
 all:
-	javac src/*.java
+	javac $(SRCFILES)
 
 test: 
 	javac -cp $(CLASSPATH) -g src/*.java
@@ -16,14 +18,9 @@ clean:
 	rm -f src/.java~
 
 doc:
-	javadoc -d javadoc/MudGame_doc/ -sourcepath src/*.java
+	javadoc -d javadoc/MudGame_doc/ $(SRCFILES)
 	#lägg till -private efter javadoc för att generera doc för allt som är private
 
 view:
 	open javadoc/Mudgame_doc/index.html
 
-#test:
-#	javac src/*.java
-#	java -ea -cp src Tests
-
-#-ea är för att assert ska fungera
