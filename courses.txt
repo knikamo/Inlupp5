@@ -8,6 +8,6 @@ Java 1;Java for beginners;30;What is the command to compile a Java program?;java
 Java 2;Advanced Java;10;How many Java interfaces can a class extend?;0;1;How ever many you want;c
 C 1;Learn C;10;Is there a string data type in C?;Yes;No;Of couse not, that would be way too easy;c
 C 2;How to Deal With Pointers;10;Will you ever truely know how pointers in C works?;Yes;No;Of course not, then C would actually be a fun language to program in;c
-Math 1;Math Book 1;10;What is dx/dy(e);e;pi;e^2;a
+Math 1;Math Book 1;10;What is dx/dy(e^x);e;x*e^x;x*e^x-1;a
 Math 2;Math Book 2;10;What is sqrt(-2);2i;sqrt(2)*i;i;b
 Math 3;Math Book 3;10;What is log(100);0;1;2;c

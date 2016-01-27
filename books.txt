@@ -1,7 +1,7 @@
 Amazing Science;Annie Melin;1965;2
 A complete guide to the universe;Annie Melin;1966;2
 Algebra-book 1;Casper Strömberg;1978;3
-Linear Algebra-book 2;Casper Strömberg;1979;3
+Linear Algebra-book 1;Casper Strömberg;1979;3
 Computer 101;David Schaffer;2003;3
 Hack 101;David Schaffer;2004;3
 Java for beginners;King J;1980;1
