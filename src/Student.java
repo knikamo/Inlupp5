@@ -1,11 +1,17 @@
 import java.util.ArrayList;
+/** Represents a student in the MUD-game. */
 public class Student extends Creature {
     private Course ongoingCourse;
     private Course completedCourse;
     private Book ongoingBook;
     private Book completedBook;
     private boolean hasAnswer;
-
+    /** Creates a new student.
+     * @param name The student's name.
+     * @param ongoingCourse The student's ongoing course.
+     * @param completedCourse The student's completed course.
+     * @param completedBook The student's book (for the completed course).
+     */
     public Student(String name, Course ongoingCourse, Course completedCourse, Book completedBook) {
 	super(name);
 	this.ongoingCourse = ongoingCourse;
@@ -14,7 +20,6 @@ public class Student extends Creature {
 	this.ongoingBook = null;
 	this.hasAnswer = false;
     }
-
     public void setCompletedBook(Book b){
 	this.completedBook = b;
     }
@@ -35,7 +40,7 @@ public class Student extends Creature {
     public String toString() {
 	return getName();
     }
-
+   
     public String talk() {
 	String studentInfo = getName() + " says: Hello, I'm " + getName();
 	studentInfo += " and I study " + ongoingCourse.getName() + ".";
