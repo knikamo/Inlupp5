@@ -58,17 +58,16 @@ public class World extends BuildWorld {
 	placeKeys();
 	placeBooks();
 	placeCreatures();
-	printRooms();
+	//printRooms();
 		
 	System.out.println(currentRoom);	
     }
 
-	
 
     public void runGame() {
 	Scanner reader = new Scanner(System.in);
 	Boolean continueGame = true;
-		
+	
 	while (continueGame) {
 	    reader = new Scanner(System.in);
 	    System.out.print("What's next?\n> ");
@@ -79,15 +78,9 @@ public class World extends BuildWorld {
 	    
 	    switch (splitInput[0].toLowerCase()) {
 	    case "help": printHelp(); break;
-	
-	    case "show":	
-		if (twoWords && splitInput[1].toLowerCase().equals("hp")) 
-		    System.out.println("Current HP: " + player.getHp());
-		if (twoWords && splitInput[1].toLowerCase().equals("ongoing"))
-		    player.printOngoing();
-		if (twoWords && splitInput[1].toLowerCase().equals("completed"))
-		    player.printCompleted();
-		break;
+		
+		//EX2
+	    case "show": printShow(twoWords, splitInput[1]); break;
 
 	    case "drop":
 		if (twoWords)
@@ -134,6 +127,15 @@ public class World extends BuildWorld {
 
 	reader.close();
     }
+
+    private void printShow(Boolean twoWords, String splitInput) {
+		if (twoWords && splitInput.toLowerCase().equals("hp")) 
+		    System.out.println("Current HP: " + player.getHp());
+		if (twoWords && splitInput.toLowerCase().equals("ongoing"))
+		    player.printOngoing();
+		if (twoWords && splitInput.toLowerCase().equals("completed"))
+		    player.printCompleted();
+	}
 
     private void printHelp() {
 	System.out.println(currentRoom);
@@ -351,6 +353,7 @@ public class World extends BuildWorld {
 	}
     }
 
+    //EX3
     private void placeBooks() {
 	int numberOfCourses = courses.size();
 	int numberOfStudents = students.size();
@@ -376,7 +379,7 @@ public class World extends BuildWorld {
 	}
     }
 
-
+    //EX1
     // TODO: Ta bort när allt är klart!
     public void printRooms() {
 	for (int i = 0; i < numberOfRooms; i++) {
